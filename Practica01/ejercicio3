@@ -1,0 +1,30 @@
+import math
+class EcuacionCuadratica:
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
+
+    def get_discriminante(self):
+        return self.b**2 - 4 * self.a * self.c
+
+    def get_raiz1(self):
+        if self.get_discriminante() < 0:
+            return 0
+        return (-self.b + math.sqrt(self.get_discriminante())) / (2 * self.a)
+
+    def get_raiz2(self):
+        if self.get_discriminante() < 0:
+            return 0
+        return (-self.b - math.sqrt(self.get_discriminante())) / (2 * self.a)
+import math
+a, b, c = map(float, input('Ingrese a, b, c: ').split())
+ec = EcuacionCuadratica(a, b, c)
+disc = ec.get_discriminante()
+if disc > 0:
+    print(f"La ecuacion tiene dos raices: {ec.get_raiz1()} y {ec.get_raiz2()}")
+elif disc == 0:
+    print(f"La ecuacion tiene una raiz: {ec.get_raiz1()}")
+else:
+    print("La ecuacion no tiene raices reales")
+
