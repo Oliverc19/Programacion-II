@@ -1,0 +1,26 @@
+class EcuacionLineal:
+    def __init__(self, a, b, c, d, e, f):
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+        self.e = e
+        self.f = f
+
+    def tiene_solucion(self):
+        return (self.a * self.d - self.b * self.c) != 0
+
+    def get_x(self):
+        return (self.e*self.d - self.b*self.f) / (self.a*self.d - self.b*self.c)
+
+    def get_y(self):
+        return (self.a*self.f - self.e*self.c) / (self.a*self.d - self.b*self.c)
+
+valores = input('Ingrese a, b, c, d, e, f: ').split()
+a,b,c,d,e,f = float(valores[0]),float(valores[1]),float(valores[2]),\
+              float(valores[3]),float(valores[4]),float(valores[5])
+ec = EcuacionLineal(a, b, c, d, e, f)
+if ec.tiene_solucion():
+    print(f"x = {ec.get_x()}, y = {ec.get_y()}")
+else:
+    print("La ecuacion no tiene solucion")
