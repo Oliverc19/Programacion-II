@@ -1,0 +1,29 @@
+import time
+class Cronometro:
+    def __init__(self):
+        self.inicia = time.time()  
+        self.finaliza = 0
+
+    def iniciar(self):
+        self.inicia = time.time()
+
+    def detener(self):
+        self.finaliza = time.time()
+
+    def lapso_de_tiempo(self):
+        return (self.finaliza - self.inicia) * 1000
+
+import random
+def selection_sort(lista):
+    for i in range(len(lista) - 1):
+        min_idx = i
+        for j in range(i + 1, len(lista)):
+            if lista[j] < lista[min_idx]:
+                min_idx = j
+        lista[i], lista[min_idx] = lista[min_idx], lista[i]
+
+numeros = [random.randint(0, 100000) for _ in range(100000)]
+c = Cronometro()
+selection_sort(numeros)
+c.detener()
+print("Tiempo:", c.lapso_de_tiempo(), "ms")
